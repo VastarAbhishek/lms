@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'free' 
+                sh 'cat /etc/os-release/' 
             }
         }
         }
