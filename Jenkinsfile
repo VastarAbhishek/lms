@@ -6,7 +6,8 @@ pipeline {
             steps {
                 echo 'Analyze Code..'
             }
-       						 }
+	    
+       				 }
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -23,7 +24,7 @@ pipeline {
                     def packageJSONVersion = packageJSON.version
                     echo "${packageJSONVersion}"  
                     sh "zip webapp/dist-${packageJSONVersion}.zip -r webapp/dist"
-                    sh "curl -v -u admin:Abhi1414@ --upload-file webapp/dist-${packageJSONVersion}.zip http://172.206.18.185:8081/repository/lms/"     
+                    sh "curl -v -u admin:Abhi1414@ --upload-file webapp/dist-${packageJSONVersion}.zip http://172.206.18.185/repository/lms/"     
             }
             }
         }
@@ -44,5 +45,6 @@ pipeline {
         }
     }
 }
+
 
 
