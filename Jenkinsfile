@@ -3,20 +3,9 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                // 
+                sh 'free' 
             }
         }
-        stage('Test') { 
-            steps {
-                // 
-            }
         }
-        stage('Deploy') { 
-            steps {
-                // 
-            }
-        }
-    }
 }
-
 
