@@ -25,6 +25,22 @@ pipeline {
             }
         }
 
+	 stage('Deploy LMS') {
+            steps {
+                script {
+                    echo "Deploy LMS"
+                    def packageJSON = readJSON file: 'webapp/package.json'
+                    def packageJSONVersion = packageJSON.version
+                    echo "${packageJSONVersion}"
+                    sh "curl -u admin:lms12345 -X GET \'http://172.206.18.185:8081/repository/lms/dist-${packageJSONVersion}.zip\' --output dist-'${packageJSONVersion}'.zip"
+                    sh 'sudo rm -rf /var/www/html/*'
+                    sh "sudo unzip -o dist-'${packageJSONVersion}'.zip"
+                    sh "sudo cp -r webapp/dist/* /var/www/html"
+            }
+            }
+        }
+
+
 
         }
 }
